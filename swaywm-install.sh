@@ -32,17 +32,19 @@ folders() {
 # -------------| Package Install
 packageInstall() {
 
-    sudo pacman -Syu
+    sudo pacman -Syu --noconfirm
 
     sudo pacman -S \
-      archlinux-keyring rustup git wget fzf firefox-i18n-pt-br \
-      bitwarden gucharmap mpv wofi waybar sway wayland xorg-xwayland \
-      pipewire pipewire-alsa pipewire-pulse \
+      archlinux-keyring rustup fzf firefox-i18n-pt-br \
+      bitwarden gucharmap mpv wofi waybar \
+      pipewire pipewire-alsa pipewire-pulse pavucontrol \
       ttf-fira-code ttf-jetbrains-mono-nerd ttf-dejavu \
       zsh zsh-autosuggestions zsh-syntax-highlighting \
       grim slurp wine-staging lib32-mangohud mangohud \
-      xf86-video-amdgpu kitty xdg-user-dirs python-pywal jq npm yarn \
-      neovim dunst libnotify fuse pacman-contrib reflector \
+      xf86-video-amdgpu xdg-user-dirs python-pywal jq npm yarn \
+      neovim dunst libnotify fuse pacman-contrib reflector pyenv \
+      unzip unrar p7zip catimg swaylock swaybg hyprpicker \
+      --noconfirm
 
     rustup default stable
     xdg-user-dirs-update
@@ -80,12 +82,21 @@ copyfiles() {
 
     cp "$HOME/.dotfiles/dotfiles/.config/wofi/"{config,config.drun,style.css} "$HOME/.config/wofi"
 
-    cp -r "$HOME/.dotfiles/dotfiles/scripts"                         "$HOME/Scripts"
-    cp -r "$HOME/.dotfiles/dotfiles/.config/nvim/lua"                "$HOME/.config/nvim"
-    cp -r "$HOME/.dotfiles/dotfiles/.config/sway/config.d"           "$HOME/.config/sway"
-    cp -r "$HOME/.dotfiles/dotfiles/.config/waybar/scripts"          "$HOME/.config/waybar"
+    cp -r "$HOME/.dotfiles/dotfiles/scripts/*"                        "$HOME/Scripts"
+    cp -r "$HOME/.dotfiles/dotfiles/.config/nvim/lua"                 "$HOME/.config/nvim"
+    cp -r "$HOME/.dotfiles/dotfiles/.config/sway/config.d"            "$HOME/.config/sway"
+    cp -r "$HOME/.dotfiles/dotfiles/.config/waybar/scripts"           "$HOME/.config/waybar"
+    cp -r "$HOME/.dotfiles/dotfiles/bin/*"                            "$HOME/.local/bin"
 
-    cp -r "$HOME/.dotfiles/dotfiles/bin/."                           "$HOME/.local/bin"
+# -------------| Copy Files
+copyhome() {
+    cp -r "$HOME/.dotfiles/dotfiles/home/.aliases"                    "$HOME"
+    cp -r "$HOME/.dotfiles/dotfiles/home/.scripts"                    "$HOME"
+    cp -r "$HOME/.dotfiles/dotfiles/home/.xcompose"                   "$HOME"
+    cp -r "$HOME/.dotfiles/dotfiles/home/.zprofile"                   "$HOME"
+    cp -r "$HOME/.dotfiles/dotfiles/home/.zshenv"                     "$HOME"
+    cp -r "$HOME/.dotfiles/dotfiles/home/.zshrc"                      "$HOME"
+}
 
     msg "Files copied."
 }
@@ -115,6 +126,7 @@ folders
 packageInstall
 gitclone
 copyfiles
+copyhome
 permissions
 vimpluginstall
 
