@@ -12,6 +12,7 @@ pkgInstall(){
     pipewire-pulse \
     pipewire-alsa \
     kitty \
+    git \
     sway \
     --noconfirm
 }
