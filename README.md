@@ -1,0 +1,2 @@
+# swaywm-install
+SwayWM Installation.
