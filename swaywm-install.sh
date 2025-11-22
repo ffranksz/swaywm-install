@@ -36,7 +36,7 @@ packageInstall() {
 
     sudo pacman -S \
       archlinux-keyring rustup fzf firefox-i18n-pt-br \
-      bitwarden gucharmap mpv wofi waybar \
+      bitwarden lsd gucharmap mpv wofi waybar \
       pipewire pipewire-alsa pipewire-pulse pavucontrol \
       ttf-fira-code ttf-jetbrains-mono-nerd ttf-dejavu \
       zsh zsh-autosuggestions zsh-syntax-highlighting \
@@ -82,11 +82,13 @@ copyfiles() {
 
     cp "$HOME/.dotfiles/dotfiles/.config/wofi/"{config,config.drun,style.css} "$HOME/.config/wofi"
 
-    cp "$HOME/.dotfiles/dotfiles/scripts/*"                           "$HOME/Scripts"
+    cp "$HOME/.dotfiles/dotfiles/scripts/"*                           "$HOME/Scripts"
+
+    cp   "$HOME/.dotfiles/dotfiles/bin/"*                             "$HOME/.local/bin"
+    
     cp -r "$HOME/.dotfiles/dotfiles/.config/nvim/lua"                 "$HOME/.config/nvim"
     cp -r "$HOME/.dotfiles/dotfiles/.config/sway/config.d"            "$HOME/.config/sway"
     cp -r "$HOME/.dotfiles/dotfiles/.config/waybar/scripts"           "$HOME/.config/waybar"
-    cp -r "$HOME/.dotfiles/dotfiles/bin/"                             "$HOME/.local/"
 
 # -------------| Copy Files
 copyhome() {
