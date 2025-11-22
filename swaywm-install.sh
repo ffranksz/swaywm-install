@@ -19,7 +19,7 @@ err() {
 # -------------| Folder Create
 folders() {
 
-    mkdir -p "$HOME"/{Franks,Scripts,.dotfiles,.projects,.local/bin}
+    mkdir -p "$HOME"/{Franks,Wallpapers,Scripts,.dotfiles,.projects,.local/bin}
     mkdir -p "$HOME/.config"/{sway,nvim,wofi,waybar,kitty,dunst}
 
     mkdir -p "$HOME/.config/nvim"/{lua,core,plugins,utils}
