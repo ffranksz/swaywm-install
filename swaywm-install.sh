@@ -82,11 +82,11 @@ copyfiles() {
 
     cp "$HOME/.dotfiles/dotfiles/.config/wofi/"{config,config.drun,style.css} "$HOME/.config/wofi"
 
-    cp -r "$HOME/.dotfiles/dotfiles/scripts/*"                        "$HOME/Scripts"
+    cp "$HOME/.dotfiles/dotfiles/scripts/*"                           "$HOME/Scripts"
     cp -r "$HOME/.dotfiles/dotfiles/.config/nvim/lua"                 "$HOME/.config/nvim"
     cp -r "$HOME/.dotfiles/dotfiles/.config/sway/config.d"            "$HOME/.config/sway"
     cp -r "$HOME/.dotfiles/dotfiles/.config/waybar/scripts"           "$HOME/.config/waybar"
-    cp -r "$HOME/.dotfiles/dotfiles/bin/*"                            "$HOME/.local/bin"
+    cp -r "$HOME/.dotfiles/dotfiles/bin/"                             "$HOME/.local/"
 
 # -------------| Copy Files
 copyhome() {
@@ -113,7 +113,7 @@ permissions() {
 }
 
 # -------------| Vim-Plug Install
-vimpluginstall() {
+vimpluginstall()   {
 
     sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
         --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
